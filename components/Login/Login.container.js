@@ -1,7 +1,7 @@
 // import { withNotifications } from 'bluerain-client-services';
 import React, { PropTypes } from 'react';
 // import { showLoading, hideLoading } from 'react-redux-loading-bar';
-import store from '../../redux/store';
+// import store from '../../redux/store';
 import { withNotifications } from '../Notifications/withNotifications';
 
 import LoginComponent from './Login.component';

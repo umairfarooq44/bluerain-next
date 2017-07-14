@@ -3,7 +3,7 @@
  */
 import React, { PropTypes } from 'react';
 // import SearchBarComponent from 'bluerain-ui/lib/searchBar/SearchBar.component';
-import IconComponent from 'bluerain-ui/lib/Icon/Icon.component';
+// import IconComponent from 'bluerain-ui/lib/Icon/Icon.component';
 import { Link } from 'react-router';
 import includes from 'lodash/includes';
 import lowerCase from 'lodash/lowerCase';
@@ -11,7 +11,7 @@ import filter from 'lodash/filter';
 import { showFlashBanner  } from 'bluerain-client-services';
 // import store from '../../redux/store';
 // import apps from '../../server/appLoader';
-import './AppDrawer.css';
+//import './AppDrawer.css';
 // import { DEV } from '../../server/config';
 // redux store
 //import { setViewAs, setFilter, setSearch } from '../../redux/actions';
@@ -32,79 +32,79 @@ class AppDrawer extends React.Component {
     this.state = {
       apps: [],
       allApps: [],
-      searchQuery: store.getState().launcher.searchQuery,
+      searchQuery: '',//store.getState().launcher.searchQuery,
       categories: [],
       // filter: store.getState().launcher.filter ? store.getState().launcher.filter : 'None',
       filter: 'None',
-      viewAsGrid: store.getState().launcher.view.viewAsGrid,
-      viewAsList: store.getState().launcher.view.viewAsList,
+      viewAsGrid: true,//store.getState().launcher.view.viewAsGrid,
+      viewAsList: false//store.getState().launcher.view.viewAsList,
     };
-    this.printGridView = this.printGridView.bind(this);
-    this.printListView = this.printListView.bind(this);
-    this.handleSearch = this.handleSearch.bind(this);
-    this.handleViewAsGrid = this.handleViewAsGrid.bind(this);
-    this.handleViewAsList = this.handleViewAsList.bind(this);
-    this.handleFilter = this.handleFilter.bind(this);
-    this.printIcons = this.printIcons.bind(this);
+    // this.printGridView = this.printGridView.bind(this);
+    // this.printListView = this.printListView.bind(this);
+    // this.handleSearch = this.handleSearch.bind(this);
+    // this.handleViewAsGrid = this.handleViewAsGrid.bind(this);
+    // this.handleViewAsList = this.handleViewAsList.bind(this);
+    // this.handleFilter = this.handleFilter.bind(this);
+    // this.printIcons = this.printIcons.bind(this);
   }
 
-  componentWillMount() {
-    // do long running stuff
-    const appsDynamicCategories = [];
-    let appsArray = [];
-    const categoryList = [];
-    if (DEV) {
-      const appNames = ['Things', 'Places', 'Groups', 'Reports', 'Dashboards', 'Developers', 'Leaderboard', 'Fleet', 'Schedules', 'Scenes', 'Rules', 'App Store', 'Subscription', 'Settings'];
-      const appIcons = ['bluetooth', 'book', 'users', 'flag', 'tachometer', 'laptop', 'graduation-cap', 'calendar', 'commenting', 'compass', 'camera', 'bolt', 'bomb', 'coffee'];
-      const appCategories = ['assets', 'assets', 'assets', 'analytics', 'analytics', 'configuration', 'analytics', 'apps', 'automation', 'automation', 'automation', 'apps', 'configuration', 'configuration'];
-      const appColors = ['#F20000', '#F9006B', '#D100D0', '#9D00D2', '#6C59CE', '#785AFE', '#00B4FB', '#00D9E8', '#00AD9A', '#00CB34', '#CFF745', '#FFC500', '#FF7229', '#676767'];
-      for (let i = 0; i < appNames.length; i += 1) {
-        const obj = {
-          name: appNames[i],
-          category: appCategories[i],
-          icons: {
-            name: appIcons[i],
-            backgroundColors: [appColors[i], '#f2f2f2'],
-          },
-          routes: {
-            path: i % 2 === 0 ? 'device-explorer' : 'hello-world',
-          },
-        };
-        appsArray.push(obj);
-      }
-    }
-    // Assigning categories to original apps
-    apps.forEach(app => {
-      const newApp = app;
-      newApp.category = 'apps';
-      if (newApp.name === 'Flows') {
-        // console.log('going to change the icon src');
-        newApp.png = '/icon-flow-app.svg';
-      }
-      appsArray.push(newApp);
-    });
-    // Finding unique categories
-    appsArray.forEach(app => {
-      appsDynamicCategories.push(app.category);
-    });
-    appsDynamicCategories.forEach(category => {
-      if (!includes(categoryList, category)) {
-        categoryList.push(category);
-      }
-    });
-    // Handling Filters
-    const allAppsArray = appsArray;
-    const filterValue = store.getState().launcher.filter;
-    if (filterValue && filterValue !== 'none') {
-      appsArray = filter(appsArray, { category: filterValue });
-    }
-    this.setState({
-      apps: appsArray,
-      allApps: allAppsArray,
-      categories: categoryList,
-      filter: filterValue || 'None',
-    });
-  }
+  // componentWillMount() {
+  //   // do long running stuff
+  //   const appsDynamicCategories = [];
+  //   let appsArray = [];
+  //   const categoryList = [];
+  //   if (DEV) {
+  //     const appNames = ['Things', 'Places', 'Groups', 'Reports', 'Dashboards', 'Developers', 'Leaderboard', 'Fleet', 'Schedules', 'Scenes', 'Rules', 'App Store', 'Subscription', 'Settings'];
+  //     const appIcons = ['bluetooth', 'book', 'users', 'flag', 'tachometer', 'laptop', 'graduation-cap', 'calendar', 'commenting', 'compass', 'camera', 'bolt', 'bomb', 'coffee'];
+  //     const appCategories = ['assets', 'assets', 'assets', 'analytics', 'analytics', 'configuration', 'analytics', 'apps', 'automation', 'automation', 'automation', 'apps', 'configuration', 'configuration'];
+  //     const appColors = ['#F20000', '#F9006B', '#D100D0', '#9D00D2', '#6C59CE', '#785AFE', '#00B4FB', '#00D9E8', '#00AD9A', '#00CB34', '#CFF745', '#FFC500', '#FF7229', '#676767'];
+  //     for (let i = 0; i < appNames.length; i += 1) {
+  //       const obj = {
+  //         name: appNames[i],
+  //         category: appCategories[i],
+  //         icons: {
+  //           name: appIcons[i],
+  //           backgroundColors: [appColors[i], '#f2f2f2'],
+  //         },
+  //         routes: {
+  //           path: i % 2 === 0 ? 'device-explorer' : 'hello-world',
+  //         },
+  //       };
+  //       appsArray.push(obj);
+  //     }
+  //   }
+  //   // Assigning categories to original apps
+  //   apps.forEach(app => {
+  //     const newApp = app;
+  //     newApp.category = 'apps';
+  //     if (newApp.name === 'Flows') {
+  //       // console.log('going to change the icon src');
+  //       newApp.png = '/icon-flow-app.svg';
+  //     }
+  //     appsArray.push(newApp);
+  //   });
+  //   // Finding unique categories
+  //   appsArray.forEach(app => {
+  //     appsDynamicCategories.push(app.category);
+  //   });
+  //   appsDynamicCategories.forEach(category => {
+  //     if (!includes(categoryList, category)) {
+  //       categoryList.push(category);
+  //     }
+  //   });
+  //   // Handling Filters
+  //   const allAppsArray = appsArray;
+  //   const filterValue = store.getState().launcher.filter;
+  //   if (filterValue && filterValue !== 'none') {
+  //     appsArray = filter(appsArray, { category: filterValue });
+  //   }
+  //   this.setState({
+  //     apps: appsArray,
+  //     allApps: allAppsArray,
+  //     categories: categoryList,
+  //     filter: filterValue || 'None',
+  //   });
+  // }
 
   // handleSearch(event) {
   //   this.setState({ searchQuery: lowerCase(event.target.value) });
@@ -194,7 +194,7 @@ class AppDrawer extends React.Component {
   }
 
   printGridView(appsArray) {
-    const windowWidth = document.body.clientWidth;
+    const windowWidth = 1000;// document.body.clientWidth;
     return appsArray.map(app => {
       return (
         <div className="app-drawer-icon" key={app.name}>
@@ -215,12 +215,16 @@ class AppDrawer extends React.Component {
 
   render() {
     const { viewAsGrid, viewAsList, filter, searchQuery } = this.state;
-    const windowWidth =document.body.clientWidth;;
+    const windowWidth =1000;// document.body.clientWidth;;
     const viewAsStyle = {
       backgroundColor: 'rgba(0,0,0,0.2)',
     };
     return (
+      <div>
+        <link rel="stylesheet" href="/static/AppDrawer.css" />
+    <link rel="stylesheet" href="/static/bluerain-bootstrap-theme.css" />
       <div className="container-fluid">
+       
         <div className="row top-bar">
           <div className={`col-lg-5 offset-lg-1 col-xs-${windowWidth < 500 ? '12' : '6'} col-sm-6 top-bar-filters`}>
             View As:&nbsp;
@@ -245,8 +249,10 @@ class AppDrawer extends React.Component {
           </div>
         </div>
         {
-          this.printIcons()
+          //this.printIcons()
         }
+        
+      </div>
       </div>
     );
   }

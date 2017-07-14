@@ -3,6 +3,7 @@ import { withSystemNav } from 'bluerain-client-services';
 
 import AbsoluteCenterLayout from '../layouts/AbsoluteCenterLayout';
 import Login from '../components/Login';
+import Layout from '../layouts/Layout';
 
 
 class LoginPage extends React.Component {
@@ -30,7 +31,9 @@ class LoginPage extends React.Component {
       onSuccessRedirectPath = location.state.nextPathname;
     }
     return (
+      <Layout>
       <Login onSuccessRedirectPath={onSuccessRedirectPath} />
+      </Layout>
     );
   }
 }
@@ -39,4 +42,4 @@ LoginPage.propTypes = {
   systemLayout: React.PropTypes.object
 };
 
-export default withSystemNav(LoginPage);
+export default LoginPage;

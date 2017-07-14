@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react';
 import  { browserHistory, Link } from 'react-router';
 
-import 'bluerain-bootstrap-theme/dist/css/components/login.css';
-import 'bluerain-bootstrap-theme/dist/css/layouts/flexbox-layout.css';
-import 'bluerain-bootstrap-theme/dist/css/layouts/absolute-center-layout.css';
+// import 'bluerain-bootstrap-theme/dist/css/components/login.css';
+// import 'bluerain-bootstrap-theme/dist/css/layouts/flexbox-layout.css';
+// import 'bluerain-bootstrap-theme/dist/css/layouts/absolute-center-layout.css';
 // import { withNotifications } from 'bluerain-client-services';
 import { withNotifications } from '../Notifications/withNotifications';
 
@@ -77,13 +77,19 @@ class LoginComponent extends React.Component {
       marginBottom: '5px'
     }
     return (
+      <div>
+        <link rel="stylesheet" href="/static/components/data-list.css" />
+          <link rel="stylesheet" href="/static/components/login.css" />
+        <link rel="stylesheet" href="/static/layouts/flexbox-layout.css" />
+        <link rel="stylesheet" href="/static/layouts/absolute-center-layout.css" />
+        <link rel="stylesheet" href="/static/bluerain-bootstrap-theme.css" />
       <div className="flexbox-layout login">
         <div className="absolute-center-layout">
           <div className="container login-xs">
             <div className="row">
               <div className="col-lg-12 col-md-12 col-12">
                 <div className="form-login">
-                  <img src="Mevris Logo-01.svg" style={{margin: "auto auto 30px"}}/>
+                  <img src="/static/Mevris Logo-01.svg" style={{margin: "auto auto 30px"}}/>
                   <Nav tabs>
                     <NavItem>
                       <NavLink
@@ -167,6 +173,7 @@ class LoginComponent extends React.Component {
             </div>
           </div>
         </div>
+      </div>
       </div>
     );
   }

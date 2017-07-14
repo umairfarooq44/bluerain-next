@@ -28,10 +28,6 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Icon = require('bluerain-ui/lib/Icon/Icon.component');
-
-var _Icon2 = _interopRequireDefault(_Icon);
-
 var _reactRouter = require('react-router');
 
 var _includes = require('lodash/includes');
@@ -48,8 +44,6 @@ var _filter2 = _interopRequireDefault(_filter);
 
 var _bluerainClientServices = require('bluerain-client-services');
 
-require('./AppDrawer.css');
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _jsxFileName = '/home/umair/Projects/bluerain-next/components/AppDrawer/AppDrawer.component.js';
@@ -58,10 +52,11 @@ var _jsxFileName = '/home/umair/Projects/bluerain-next/components/AppDrawer/AppD
  */
 
 // import SearchBarComponent from 'bluerain-ui/lib/searchBar/SearchBar.component';
+// import IconComponent from 'bluerain-ui/lib/Icon/Icon.component';
 
 // import store from '../../redux/store';
 // import apps from '../../server/appLoader';
-
+//import './AppDrawer.css';
 // import { DEV } from '../../server/config';
 // redux store
 //import { setViewAs, setFilter, setSearch } from '../../redux/actions';
@@ -84,126 +79,124 @@ var AppDrawer = function (_React$Component) {
     _this.state = {
       apps: [],
       allApps: [],
-      searchQuery: store.getState().launcher.searchQuery,
+      searchQuery: '', //store.getState().launcher.searchQuery,
       categories: [],
       // filter: store.getState().launcher.filter ? store.getState().launcher.filter : 'None',
       filter: 'None',
-      viewAsGrid: store.getState().launcher.view.viewAsGrid,
-      viewAsList: store.getState().launcher.view.viewAsList
+      viewAsGrid: true, //store.getState().launcher.view.viewAsGrid,
+      viewAsList: false //store.getState().launcher.view.viewAsList,
     };
-    _this.printGridView = _this.printGridView.bind(_this);
-    _this.printListView = _this.printListView.bind(_this);
-    _this.handleSearch = _this.handleSearch.bind(_this);
-    _this.handleViewAsGrid = _this.handleViewAsGrid.bind(_this);
-    _this.handleViewAsList = _this.handleViewAsList.bind(_this);
-    _this.handleFilter = _this.handleFilter.bind(_this);
-    _this.printIcons = _this.printIcons.bind(_this);
+    // this.printGridView = this.printGridView.bind(this);
+    // this.printListView = this.printListView.bind(this);
+    // this.handleSearch = this.handleSearch.bind(this);
+    // this.handleViewAsGrid = this.handleViewAsGrid.bind(this);
+    // this.handleViewAsList = this.handleViewAsList.bind(this);
+    // this.handleFilter = this.handleFilter.bind(this);
+    // this.printIcons = this.printIcons.bind(this);
     return _this;
   }
 
+  // componentWillMount() {
+  //   // do long running stuff
+  //   const appsDynamicCategories = [];
+  //   let appsArray = [];
+  //   const categoryList = [];
+  //   if (DEV) {
+  //     const appNames = ['Things', 'Places', 'Groups', 'Reports', 'Dashboards', 'Developers', 'Leaderboard', 'Fleet', 'Schedules', 'Scenes', 'Rules', 'App Store', 'Subscription', 'Settings'];
+  //     const appIcons = ['bluetooth', 'book', 'users', 'flag', 'tachometer', 'laptop', 'graduation-cap', 'calendar', 'commenting', 'compass', 'camera', 'bolt', 'bomb', 'coffee'];
+  //     const appCategories = ['assets', 'assets', 'assets', 'analytics', 'analytics', 'configuration', 'analytics', 'apps', 'automation', 'automation', 'automation', 'apps', 'configuration', 'configuration'];
+  //     const appColors = ['#F20000', '#F9006B', '#D100D0', '#9D00D2', '#6C59CE', '#785AFE', '#00B4FB', '#00D9E8', '#00AD9A', '#00CB34', '#CFF745', '#FFC500', '#FF7229', '#676767'];
+  //     for (let i = 0; i < appNames.length; i += 1) {
+  //       const obj = {
+  //         name: appNames[i],
+  //         category: appCategories[i],
+  //         icons: {
+  //           name: appIcons[i],
+  //           backgroundColors: [appColors[i], '#f2f2f2'],
+  //         },
+  //         routes: {
+  //           path: i % 2 === 0 ? 'device-explorer' : 'hello-world',
+  //         },
+  //       };
+  //       appsArray.push(obj);
+  //     }
+  //   }
+  //   // Assigning categories to original apps
+  //   apps.forEach(app => {
+  //     const newApp = app;
+  //     newApp.category = 'apps';
+  //     if (newApp.name === 'Flows') {
+  //       // console.log('going to change the icon src');
+  //       newApp.png = '/icon-flow-app.svg';
+  //     }
+  //     appsArray.push(newApp);
+  //   });
+  //   // Finding unique categories
+  //   appsArray.forEach(app => {
+  //     appsDynamicCategories.push(app.category);
+  //   });
+  //   appsDynamicCategories.forEach(category => {
+  //     if (!includes(categoryList, category)) {
+  //       categoryList.push(category);
+  //     }
+  //   });
+  //   // Handling Filters
+  //   const allAppsArray = appsArray;
+  //   const filterValue = store.getState().launcher.filter;
+  //   if (filterValue && filterValue !== 'none') {
+  //     appsArray = filter(appsArray, { category: filterValue });
+  //   }
+  //   this.setState({
+  //     apps: appsArray,
+  //     allApps: allAppsArray,
+  //     categories: categoryList,
+  //     filter: filterValue || 'None',
+  //   });
+  // }
+
+  // handleSearch(event) {
+  //   this.setState({ searchQuery: lowerCase(event.target.value) });
+  //   store.dispatch(setSearch(event.target.value));
+  // }
+
+  // handleViewAsGrid() {
+  //   const { viewAsGrid, viewAsList } = this.state;
+  //   if (!viewAsGrid) {
+  //     this.setState(prevState => ({
+  //       viewAsGrid: !prevState.viewAsGrid,
+  //       viewAsList: !prevState.viewAsList,
+  //     }));
+  //     store.dispatch(setViewAs(!viewAsGrid, !viewAsList));
+  //   }
+  // }
+
+  // handleViewAsList() {
+  //   const { viewAsList, viewAsGrid } = this.state;
+  //   if (!viewAsList) {
+  //     this.setState(prevState => ({
+  //       viewAsList: !prevState.viewAsList,
+  //       viewAsGrid: !prevState.viewAsGrid,
+  //     }));
+  //     store.dispatch(setViewAs(!viewAsGrid, !viewAsList));
+  //   }
+  //   // store.dispatch(socketConnected());
+  //   // this.props.showLoading();
+  //   // console.log('Props in index page is : ', this.props);
+  // }
+
+  // handleFilter(value) {
+  //   const { allApps } = this.state;
+  //   if (value === 'none') {
+  //     this.setState({ apps: allApps });
+  //   } else {
+  //     const appsArray = filter(allApps, { category: value });
+  //     this.setState({ apps: appsArray });
+  //   }
+  //   store.dispatch(setFilter(value));
+  //   this.setState({ filter: value });
+  // }
+
   (0, _createClass3.default)(AppDrawer, [{
-    key: 'componentWillMount',
-    value: function componentWillMount() {
-      // do long running stuff
-      var appsDynamicCategories = [];
-      var appsArray = [];
-      var categoryList = [];
-      if (DEV) {
-        var appNames = ['Things', 'Places', 'Groups', 'Reports', 'Dashboards', 'Developers', 'Leaderboard', 'Fleet', 'Schedules', 'Scenes', 'Rules', 'App Store', 'Subscription', 'Settings'];
-        var appIcons = ['bluetooth', 'book', 'users', 'flag', 'tachometer', 'laptop', 'graduation-cap', 'calendar', 'commenting', 'compass', 'camera', 'bolt', 'bomb', 'coffee'];
-        var appCategories = ['assets', 'assets', 'assets', 'analytics', 'analytics', 'configuration', 'analytics', 'apps', 'automation', 'automation', 'automation', 'apps', 'configuration', 'configuration'];
-        var appColors = ['#F20000', '#F9006B', '#D100D0', '#9D00D2', '#6C59CE', '#785AFE', '#00B4FB', '#00D9E8', '#00AD9A', '#00CB34', '#CFF745', '#FFC500', '#FF7229', '#676767'];
-        for (var i = 0; i < appNames.length; i += 1) {
-          var obj = {
-            name: appNames[i],
-            category: appCategories[i],
-            icons: {
-              name: appIcons[i],
-              backgroundColors: [appColors[i], '#f2f2f2']
-            },
-            routes: {
-              path: i % 2 === 0 ? 'device-explorer' : 'hello-world'
-            }
-          };
-          appsArray.push(obj);
-        }
-      }
-      // Assigning categories to original apps
-      apps.forEach(function (app) {
-        var newApp = app;
-        newApp.category = 'apps';
-        if (newApp.name === 'Flows') {
-          // console.log('going to change the icon src');
-          newApp.png = '/icon-flow-app.svg';
-        }
-        appsArray.push(newApp);
-      });
-      // Finding unique categories
-      appsArray.forEach(function (app) {
-        appsDynamicCategories.push(app.category);
-      });
-      appsDynamicCategories.forEach(function (category) {
-        if (!(0, _includes2.default)(categoryList, category)) {
-          categoryList.push(category);
-        }
-      });
-      // Handling Filters
-      var allAppsArray = appsArray;
-      var filterValue = store.getState().launcher.filter;
-      if (filterValue && filterValue !== 'none') {
-        appsArray = (0, _filter2.default)(appsArray, { category: filterValue });
-      }
-      this.setState({
-        apps: appsArray,
-        allApps: allAppsArray,
-        categories: categoryList,
-        filter: filterValue || 'None'
-      });
-    }
-
-    // handleSearch(event) {
-    //   this.setState({ searchQuery: lowerCase(event.target.value) });
-    //   store.dispatch(setSearch(event.target.value));
-    // }
-
-    // handleViewAsGrid() {
-    //   const { viewAsGrid, viewAsList } = this.state;
-    //   if (!viewAsGrid) {
-    //     this.setState(prevState => ({
-    //       viewAsGrid: !prevState.viewAsGrid,
-    //       viewAsList: !prevState.viewAsList,
-    //     }));
-    //     store.dispatch(setViewAs(!viewAsGrid, !viewAsList));
-    //   }
-    // }
-
-    // handleViewAsList() {
-    //   const { viewAsList, viewAsGrid } = this.state;
-    //   if (!viewAsList) {
-    //     this.setState(prevState => ({
-    //       viewAsList: !prevState.viewAsList,
-    //       viewAsGrid: !prevState.viewAsGrid,
-    //     }));
-    //     store.dispatch(setViewAs(!viewAsGrid, !viewAsList));
-    //   }
-    //   // store.dispatch(socketConnected());
-    //   // this.props.showLoading();
-    //   // console.log('Props in index page is : ', this.props);
-    // }
-
-    // handleFilter(value) {
-    //   const { allApps } = this.state;
-    //   if (value === 'none') {
-    //     this.setState({ apps: allApps });
-    //   } else {
-    //     const appsArray = filter(allApps, { category: value });
-    //     this.setState({ apps: appsArray });
-    //   }
-    //   store.dispatch(setFilter(value));
-    //   this.setState({ filter: value });
-    // }
-
-  }, {
     key: 'printIcons',
     value: function printIcons() {
       var _state = this.state,
@@ -269,7 +262,7 @@ var AppDrawer = function (_React$Component) {
   }, {
     key: 'printGridView',
     value: function printGridView(appsArray) {
-      var windowWidth = document.body.clientWidth;
+      var windowWidth = 1000; // document.body.clientWidth;
       return appsArray.map(function (app) {
         return _react2.default.createElement('div', { className: 'app-drawer-icon', key: app.name, __source: {
             fileName: _jsxFileName,
@@ -279,7 +272,7 @@ var AppDrawer = function (_React$Component) {
             fileName: _jsxFileName,
             lineNumber: 201
           }
-        }, _react2.default.createElement(_Icon2.default, {
+        }, _react2.default.createElement(IconComponent, {
           name: app.icons.name,
           shadow: '20px',
           text: app.name, textColor: 'white',
@@ -304,92 +297,105 @@ var AppDrawer = function (_React$Component) {
           filter = _state2.filter,
           searchQuery = _state2.searchQuery;
 
-      var windowWidth = document.body.clientWidth;;
+      var windowWidth = 1000; // document.body.clientWidth;;
       var viewAsStyle = {
         backgroundColor: 'rgba(0,0,0,0.2)'
       };
-      return _react2.default.createElement('div', { className: 'container-fluid', __source: {
+      return _react2.default.createElement('div', {
+        __source: {
           fileName: _jsxFileName,
           lineNumber: 223
         }
-      }, _react2.default.createElement('div', { className: 'row top-bar', __source: {
+      }, _react2.default.createElement('link', { rel: 'stylesheet', href: '/static/AppDrawer.css', __source: {
           fileName: _jsxFileName,
           lineNumber: 224
         }
-      }, _react2.default.createElement('div', { className: 'col-lg-5 offset-lg-1 col-xs-' + (windowWidth < 500 ? '12' : '6') + ' col-sm-6 top-bar-filters', __source: {
+      }), _react2.default.createElement('link', { rel: 'stylesheet', href: '/static/bluerain-bootstrap-theme.css', __source: {
           fileName: _jsxFileName,
           lineNumber: 225
         }
-      }, 'View As:\xA0', _react2.default.createElement('button', { className: 'view-as', style: viewAsList ? viewAsStyle : null, onClick: this.handleViewAsList, __source: {
+      }), _react2.default.createElement('div', { className: 'container-fluid', __source: {
           fileName: _jsxFileName,
-          lineNumber: 227
+          lineNumber: 226
         }
-      }, 'List'), _react2.default.createElement('button', { className: 'view-as', style: viewAsGrid ? viewAsStyle : null, onClick: this.handleViewAsGrid, __source: {
+      }, _react2.default.createElement('div', { className: 'row top-bar', __source: {
           fileName: _jsxFileName,
           lineNumber: 228
         }
-      }, 'Grid'), ' \xA0\xA0\xA0\xA0', _react2.default.createElement('div', { className: 'dropdown', __source: {
+      }, _react2.default.createElement('div', { className: 'col-lg-5 offset-lg-1 col-xs-' + (windowWidth < 500 ? '12' : '6') + ' col-sm-6 top-bar-filters', __source: {
           fileName: _jsxFileName,
           lineNumber: 229
+        }
+      }, 'View As:\xA0', _react2.default.createElement('button', { className: 'view-as', style: viewAsList ? viewAsStyle : null, onClick: this.handleViewAsList, __source: {
+          fileName: _jsxFileName,
+          lineNumber: 231
+        }
+      }, 'List'), _react2.default.createElement('button', { className: 'view-as', style: viewAsGrid ? viewAsStyle : null, onClick: this.handleViewAsGrid, __source: {
+          fileName: _jsxFileName,
+          lineNumber: 232
+        }
+      }, 'Grid'), ' \xA0\xA0\xA0\xA0', _react2.default.createElement('div', { className: 'dropdown', __source: {
+          fileName: _jsxFileName,
+          lineNumber: 233
         }
       }, _react2.default.createElement('span', {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 230
+          lineNumber: 234
         }
       }, 'Filters: \xA0', capitalizeFirstLetter(filter)), _react2.default.createElement('div', { className: 'dropdown-content', __source: {
           fileName: _jsxFileName,
-          lineNumber: 231
+          lineNumber: 235
         }
       }, _react2.default.createElement('button', { onClick: function onClick() {
           return _this3.handleFilter('none');
         }, __source: {
           fileName: _jsxFileName,
-          lineNumber: 232
+          lineNumber: 236
         }
       }, 'None'), _react2.default.createElement('button', { onClick: function onClick() {
           return _this3.handleFilter('assets');
         }, __source: {
           fileName: _jsxFileName,
-          lineNumber: 233
+          lineNumber: 237
         }
       }, 'Assets'), _react2.default.createElement('button', { onClick: function onClick() {
           return _this3.handleFilter('analytics');
         }, __source: {
           fileName: _jsxFileName,
-          lineNumber: 234
+          lineNumber: 238
         }
       }, 'Analytics'), _react2.default.createElement('button', { onClick: function onClick() {
           return _this3.handleFilter('configuration');
         }, __source: {
           fileName: _jsxFileName,
-          lineNumber: 235
+          lineNumber: 239
         }
       }, 'Configuration'), _react2.default.createElement('button', { onClick: function onClick() {
           return _this3.handleFilter('apps');
         }, __source: {
           fileName: _jsxFileName,
-          lineNumber: 236
+          lineNumber: 240
         }
       }, 'Apps'), _react2.default.createElement('button', { onClick: function onClick() {
           return _this3.handleFilter('automation');
         }, __source: {
           fileName: _jsxFileName,
-          lineNumber: 237
+          lineNumber: 241
         }
       }, 'Automation')))), _react2.default.createElement('div', { className: 'col-lg-3 offset-lg-1 col-xs-' + (windowWidth < 500 ? '12' : '6') + ' col-sm-5', __source: {
           fileName: _jsxFileName,
-          lineNumber: 241
+          lineNumber: 245
         }
       }, _react2.default.createElement('div', { className: 'form-group', __source: {
           fileName: _jsxFileName,
-          lineNumber: 242
+          lineNumber: 246
         }
       }, _react2.default.createElement('input', { className: 'form-control search', type: 'text', name: 'name', onChange: this.handleSearch, value: searchQuery || '', placeholder: 'Search here...', __source: {
           fileName: _jsxFileName,
-          lineNumber: 243
+          lineNumber: 247
         }
-      })))), this.printIcons());
+      }))))));
     }
   }]);
 
