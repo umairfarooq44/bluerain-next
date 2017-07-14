@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
-import { Icon } from 'react-fa';
+// import { Icon } from 'react-fa';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import ReactTooltip from 'react-tooltip';
 import { withSocket } from 'bluerain-client-services';
@@ -66,7 +66,7 @@ class SystemNavComponent extends React.Component {
       <li className="nav-item" key={item.slug} data-tip={item.title} data-for="system-nav" >
         <Link className="nav-link" to={item.to}>
           <span className="nav-item-icon">
-            <Icon name={item.icon} aria-hidden="true" />
+            {/*<Icon name={item.icon} aria-hidden="true" />*/}
           </span>
           <span className="nav-item-text">{item.title}</span>
           <span className="hidden-sm-up">{item.title}</span>
@@ -93,7 +93,7 @@ class SystemNavComponent extends React.Component {
             <li className="nav-item">
               <Link className="nav-link" to="/app">
                 <span className="nav-item-icon">
-                  <Icon name="rocket" aria-hidden="true" />
+                  {/*<Icon name="rocket" aria-hidden="true" />*/}
                 </span>
                 <span className="nav-item-text">Launcher</span>
               </Link>

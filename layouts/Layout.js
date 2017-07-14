@@ -1,9 +1,10 @@
 import React from 'react';
 import { Notifications, withSystemNav, FlashBanner, LoadingBar } from 'bluerain-client-services';
-//import { connect } from 'react-redux';
+import withData from '../lib/withData'
+import { connect } from 'react-redux';
 //import './system.css';
 //import 'bluerain-bootstrap-theme/dist/css/layouts/system-layout.css';
-//import SystemNav from '../components/SystemNav';
+import SystemNav from '../components/SystemNav';
 
 
 const loadingBarStyle = {
@@ -12,7 +13,7 @@ const loadingBarStyle = {
   // backgroundColor: '#8C006E', // dark
 };
 
-export default class Layout extends React.Component {
+ class Layout extends React.Component {
   constructor(props) {
     super(props);
     // console.log('System Layout :: Props :: ', props);
@@ -39,8 +40,8 @@ export default class Layout extends React.Component {
           <div>
               <link rel="stylesheet" href="/static/layouts/system-layout.css" />
         <div className="system-layout">
-          {/*<LoadingBar style={loadingBarStyle} showFastActions progressIncrease={3} />*/}
-          {/*<Notifications />*/}
+          <LoadingBar style={loadingBarStyle} showFastActions progressIncrease={3} />
+          <Notifications />
           <div className="system-body">
             {this.props.children}
           </div>
@@ -62,9 +63,9 @@ Layout.defaultProps = {
   showFlashBanner: false,
   showAppBar: false,
 };
+ export default Layout;
 
-
-// // make a connection of your component with the store
+// make a connection of your component with the store
 // const mapStateToProps = (state) => {
 //   return {
 //     showFlashBanner: state.flashBanner.show
@@ -74,4 +75,4 @@ Layout.defaultProps = {
 //   mapStateToProps,
 // )(Layout);
 
-// export default withSystemNav(FilterLayout);
+// export default withData(withSystemNav(FilterLayout));

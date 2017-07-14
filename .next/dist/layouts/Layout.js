@@ -30,14 +30,21 @@ var _react2 = _interopRequireDefault(_react);
 
 var _bluerainClientServices = require('bluerain-client-services');
 
+var _withData = require('../lib/withData');
+
+var _withData2 = _interopRequireDefault(_withData);
+
+var _reactRedux = require('react-redux');
+
+var _SystemNav = require('../components/SystemNav');
+
+var _SystemNav2 = _interopRequireDefault(_SystemNav);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _jsxFileName = '/home/umair/Projects/bluerain-next/layouts/Layout.js';
-
-//import { connect } from 'react-redux';
 //import './system.css';
 //import 'bluerain-bootstrap-theme/dist/css/layouts/system-layout.css';
-//import SystemNav from '../components/SystemNav';
 
 
 var loadingBarStyle = {
@@ -83,19 +90,28 @@ var Layout = function (_React$Component) {
       return _react2.default.createElement('div', {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 39
+          lineNumber: 40
         }
       }, _react2.default.createElement('link', { rel: 'stylesheet', href: '/static/layouts/system-layout.css', __source: {
           fileName: _jsxFileName,
-          lineNumber: 40
+          lineNumber: 41
         }
       }), _react2.default.createElement('div', { className: 'system-layout', __source: {
           fileName: _jsxFileName,
-          lineNumber: 41
+          lineNumber: 42
         }
-      }, _react2.default.createElement('div', { className: 'system-body', __source: {
+      }, _react2.default.createElement(_bluerainClientServices.LoadingBar, { style: loadingBarStyle, showFastActions: true, progressIncrease: 3, __source: {
+          fileName: _jsxFileName,
+          lineNumber: 43
+        }
+      }), _react2.default.createElement(_bluerainClientServices.Notifications, {
+        __source: {
           fileName: _jsxFileName,
           lineNumber: 44
+        }
+      }), _react2.default.createElement('div', { className: 'system-body', __source: {
+          fileName: _jsxFileName,
+          lineNumber: 45
         }
       }, this.props.children)));
     }
@@ -103,9 +119,6 @@ var Layout = function (_React$Component) {
 
   return Layout;
 }(_react2.default.Component);
-
-exports.default = Layout;
-
 
 Layout.propTypes = {
   children: _react2.default.PropTypes.object,
@@ -119,8 +132,9 @@ Layout.defaultProps = {
   showFlashBanner: false,
   showAppBar: false
 };
+exports.default = Layout;
 
-// // make a connection of your component with the store
+// make a connection of your component with the store
 // const mapStateToProps = (state) => {
 //   return {
 //     showFlashBanner: state.flashBanner.show
@@ -130,4 +144,4 @@ Layout.defaultProps = {
 //   mapStateToProps,
 // )(Layout);
 
-// export default withSystemNav(FilterLayout);
+// export default withData(withSystemNav(FilterLayout));
