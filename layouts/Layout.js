@@ -40,8 +40,8 @@ const loadingBarStyle = {
           <div>
               <link rel="stylesheet" href="/static/layouts/system-layout.css" />
         <div className="system-layout">
-          <LoadingBar style={loadingBarStyle} showFastActions progressIncrease={3} />
-          <Notifications />
+          {/*<LoadingBar style={loadingBarStyle} showFastActions progressIncrease={3} />*/}
+          {/*<Notifications />*/}
           <div className="system-body">
             {this.props.children}
           </div>
